@@ -1,15 +1,13 @@
-const os = require('fs');
+// In file system module every module is of two kinds (sync and async) always prefers async one
+const fs = require('fs');
 
-let val;
-val = os.readdirSync('./');
+const files = fs.readdirSync('./');
+console.log(files);
 
-// Async form
-val = os.readdir('./', (err, files) => {
+fs.readdir('./', (err, files) => {
   if (err) {
-    console.log('Error', err);
+    console.log('error', err);
   } else {
-    console.log('result', files);
+    console.log(files);
   }
 });
-
-console.log(val);
